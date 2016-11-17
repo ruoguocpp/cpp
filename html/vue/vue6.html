@@ -1,0 +1,57 @@
+<!--魔板语法-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>魔板语法</title>
+	</head>
+	<body>
+		<div id="pureText" v-html="msg">
+		</div>
+		<div id="cpp">
+		{{a|filter1|filter2 }}
+		</div>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+	    <script>
+	        var dataText = {"msg": "Hello,chenpengpeng,欢迎来到我的空间！！！ "}
+	        var vm1 = new Vue({
+	        	el:"#pureText",
+	        	data:dataText
+	        });
+	        var data = { a: "this is a book !!!",b:"123",c:"456" }
+			var vm = new Vue({
+				el:'#cpp',
+				data:data,
+				methods:{
+					createdaaa:function(){
+						console.log('a is:aaa' + this.a);
+						console.log('chenxiaopeng think a isaaa' + data.a);
+						return new Date();
+					},
+					messageFunction:function(){
+						console.log("进入了这里");
+						this.a = 5;
+						return 5;
+					}
+					
+				},
+				filters:{
+					filter1:function(value){
+						if(!value) return '';
+						value = value.toLowerCase();
+						value = value.split(' ');
+						for(var i=0; i< value.length; i++){
+							value[i] = value[i].slice(0,1).toUpperCase() + value[i].slice(1);
+						}
+						return value.join(' ');
+					},
+					filter2:function(value){
+						console.log("cpp----",value);
+						return value + "chenpengpeng";
+					}
+				}
+			});
+			//vue生命周期:观察data数据，初始化事件，created:function方法，el是否存在 ,temptalate渲染
+	    </script>
+	</body>
+</html>

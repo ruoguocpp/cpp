@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script>
+		function num1(a){
+			num2(a, function(i){
+				if(typeof a !== 'number') return;
+				var value = i*a;
+				console.log(value);
+			})
+		}
+		function num2(temp_a, callback){
+			num3(function(b){
+				callback(b)
+			})
+		}
+		function num3(callback){
+			callback(3);
+		}
+		console.log(num1(10));
+	</script>
+	</body>
+</html>

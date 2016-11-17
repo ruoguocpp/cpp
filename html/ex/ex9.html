@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+// 获取当前时间戳(以s为单位)
+// 获取某个时间格式的时间戳
+var stringTime = "2014-07-10 10:21:12";
+
+function format(time, format) {
+	var dateO;
+		if(typeof time == 'number' && time.toString().length == 13){
+			dateO = new Date(time);
+	    }else if(time instanceof Date){
+			dateO = time;
+		}else{
+			return;
+		}
+	  
+       var date = {
+              "M+": dateO.getMonth() + 1,
+              "d+": dateO.getDate(),
+              "h+": dateO.getHours(),
+              "m+": dateO.getMinutes(),
+              "s+": dateO.getSeconds(),
+              "q+": Math.floor((dateO.getMonth() + 3) / 3),
+              "S+": dateO.getMilliseconds()
+       };
+       if(format === 'yyyyMMdd-China'){
+       	var month = date["M+"] < 10 ? '0'+ date["M+"] : date["M+"];
+       	return ''+ dateO.getFullYear()+ '年'+ month+ '月'+ dateO.getDate()+'日';
+       }
+       if(format === 'MMdd-China'){
+       	var month = date["M+"] < 10 ? '0'+ date["M+"] : date["M+"];
+       	return ''+ month+ '月'+ dateO.getDate()+'日';
+       }
+       if (/(y+)/i.test(format)) {
+              format = format.replace(RegExp.$1, (dateO.getFullYear() + '').substr(4 - RegExp.$1.length));
+       }
+       for (var k in date) {
+              if (new RegExp("(" + k + ")").test(format)) {
+                     format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                            ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+              }
+       }
+       return format;
+}
+
+var day = new Date();
+console.log(day.getTime());
+var b = day.getTime() - 3600*10000;
+console.log(format(day, 'yyyy-MM-dd h:mm:s'));
+console.log(format(b, 'yyyyMMdd-China'));
+console.log(b);
+console.log(format(b, 'MMdd-China'));
+/*console.log(newDate.format('yyyy-MM-dd h:mm:s'));
+console.log(newDate.format('yyyy/MM/dd '));
+console.log(newDate.format('q'));
+console.log("cpp",aaa.format('MMdd-China'));
+console.log("cpp",aaa.format('yyyyMMdd-China'));*/
+
+</script>

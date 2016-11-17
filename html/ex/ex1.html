@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas绘图</title>
+	</head>
+	<body>
+		<canvas id="drawing" width="1000" height="400">陈小鹏的画板</canvas>
+		<script>
+			var drawing = document.getElementById("drawing");
+			if(drawing.getContext){
+				var context = drawing.getContext("2d");
+				console.log("context",context);
+				context.fillStyle = "red";
+				context.fillRect(10,10,100,400);
+				
+				//var context1 = drawing.getContext("2d");
+				context.strokeStyle = "#333333";
+				context.strokeRect(30,30,100,100);
+				
+				
+				//清楚一块
+				context.clearRect(40,200,10,10);
+				
+				//画图
+				context.beginPath();
+				context.strokeStyle = "red";
+				context.arc(300,150,100,0,2*Math.PI,false);
+				
+				context.moveTo(300, 150);
+				context.lineTo(300,60);
+				
+				context.moveTo(300, 150);
+				context.lineTo(240,150);
+				
+				//context.arc(300,350,100,0,0.5*Math.PI,false);
+				//context.moveTo(400, 300);
+				//context.arc(300,150,)
+				
+				//moveTo()
+				context.stroke();
+				
+			}
+		</script>
+	</body>
+</html>

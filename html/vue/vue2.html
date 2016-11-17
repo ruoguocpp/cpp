@@ -1,0 +1,31 @@
+<!--现在在传值方面的问题已经解决-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+    <div id="cpp">
+        <input v-model= "a">
+    </div>
+	<script type="text/javascript" src="../../js/vue.js" ></script>
+    <script>
+        var data = { a: 1 }
+		var vm = new Vue({
+			data:data,
+			created:function(){
+				console.log('a is:' + this.a);
+				console.log('chenxiaopeng think a is' + data.a);
+				console.log("cpp think this method is diaoyong" + this.createdaaa() );
+			},
+			methods:{
+				createdaaa:function(){
+					console.log('a is:aaa' + this.a);
+					console.log('chenxiaopeng think a isaaa' + data.a);
+				}
+			}
+		});
+    </script>
+	</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<style>
+		    body{
+		    	font-family: "微软雅黑";
+		    	font-size: 14px;
+		    }
+		    .t_table{
+				border-collapse:collapse;
+		    }
+			.t_head{
+				text-align: center;
+				height:40px;
+				line-height: 40px;
+			}
+			.t_head th{
+				width:200px;
+				border:1px solid #d7d7d7;
+			}
+			.tbody{
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+			}
+			.tbody td{
+				border:1px solid #d7d7d7;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<table class="t_table">
+			<tr class="t_head">
+				<th><input type="checkbox" class="all"/></th><th>学号</th><th>姓名</th><th>年龄</th><th>增加</th>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="1" class="aaa">1</td><td>张三</td><td>19</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="2" class="aaa">2</td><td>小磊</td><td>20</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="3" class="aaa">3</td><td>小月</td><td>21</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="4" class="aaa">4</td><td>小张</td><td>20</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="5" class="aaa">5</td><td>小李</td><td>20</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="6" class="aaa">6</td><td>小王</td><td>21</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="7" class="aaa">7</td><td>小丽</td><td>22</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="8" class="aaa">8</td><td>小红</td><td>19</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="9" class="aaa">9</td><td>小明</td><td>18</td><td>增加</td>
+			</tr>
+			<tr class="tbody">
+				<td><input type="checkbox"/></td><td id="10" class="aaa">10</td><td>小海</td><td>20</td><td>增加</td>
+			</tr>
+		</table>
+		<script>
+			$(function(){
+				var selectArr = [],
+				    len = $(".tbody").length;
+				$(".all").click(function(){
+					if(this.checked){
+						$(".tbody").each(function(i,item){	
+							//$(".tbody").eq(i).find(":checkbox").attr("checked", true);  is_ok
+							//$(item).find(":checkbox").attr("checked", true); is_ok
+							$(this).find(":checkbox").prop("checked", true);
+							var this_id = $(this).find(".aaa").attr("id");
+							var index = selectArr.indexOf(this_id);
+							if(index == -1){
+								selectArr.push(this_id);
+							}
+						})
+					}else{
+						$(".tbody input:checkbox").prop("checked", false);
+						selectArr = [];
+					}
+					console.log(selectArr);
+
+				});
+				
+				$(".tbody").click(function(){
+					var isSelected = $(this).find(":checkbox").prop("checked"),
+						this_id = $(this).find(".aaa").attr("id"),
+						index = selectArr.indexOf(this_id);
+					if(isSelected){
+						if(index == -1){
+							selectArr.push(this_id);
+						}	
+					}else{
+						if(index > -1){
+							selectArr.splice(index,1);
+						}
+					}					
+					if(len === selectArr.length){
+						$(".all").prop("checked",true);
+					}else{
+						$(".all").prop("checked",false);
+					}
+					console.log(selectArr);
+				})
+			})
+		</script>
+	</body>
+</html>

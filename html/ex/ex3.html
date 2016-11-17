@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>不需要页面图片显示加载</title>
+		<style>
+		    html{
+		    	background: gray;
+		    }
+		    #loading{
+			    z-index: 200;
+			    position: fixed;
+			    top: 50%;
+			    left: 50%;
+			    border:1px solid red;
+			}
+			#loading-screen {
+			    display: block;
+			    position: absolute;
+			    text-align: center;
+			    width: 60px;
+			    height: 60px;
+			    top: 50%;
+			    -webkit-transform: translate(-50%,-50%);
+			    transform: translate(-50%,-50%);
+			    left: 50%;
+			    background: white;
+			    border-radius: 5px;
+			    z-index: 500;
+			}
+			#canvas-font-wrap{
+				font-family: '微软雅黑';
+				position:relative;
+				height: 60px;
+				width:60px;
+				line-height: 60px;
+				text-align: center;
+				color: darkgray;
+			}
+			.font-center{
+				height: 48px;
+				width:48px;
+				border:2px solid rgb(223,223,223);
+				border-radius: 25px;
+				line-height:48px;
+				position: absolute;
+				left: 4px;
+				top:4px;
+			}
+			
+		#loading-screen .vip-cvs {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    -webkit-transform: translate(-25%,-25%) scale(0.5);
+			    transform: translate(-25%,-25%) scale(0.5);
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="loading">
+		    <div id='loading-screen'>
+		    	<div id="canvas-font-wrap"style="">
+		    		<div class="font-center" style="">cpp</div>
+		    	</div>
+		        <canvas class='vip-cvs' width='120' height='120' id="canvas"></canvas>
+		    </div>
+		</div>
+		<!--//js路径更改自己的路径-->
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<!--js路径更改自己的路径-->
+		<script type="text/javascript" src="../js/loadAnimation.js" ></script>
+		<script type="text/javascript">
+			showLoadingScreen();
+		</script>
+	</body>
+</html>

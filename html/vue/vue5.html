@@ -1,0 +1,36 @@
+<!--vue生命周期的了解：vue生命周期:观察data数据，初始化事件，created:function方法，el是否存在 ,temptalate渲染,mounted方法（检查updata）, beforeDestroy-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue生命周期的了解</title>
+	</head>
+	<body>
+		<div id="cpp">
+		  <p>Original message: {{ this.createdaaa()}}</p>
+		  <p>Computed reversed message: "{{ messageFunction() }}"</p>
+		</div>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+	    <script>
+	        var data = { a: 1 }
+			var vm = new Vue({
+				el:'#cpp',
+				data:data,
+				methods:{
+					createdaaa:function(){
+						console.log('a is:aaa' + this.a);
+						console.log('chenxiaopeng think a isaaa' + data.a);
+						return new Date();
+					},
+					messageFunction:function(){
+						console.log("进入了这里");
+						this.a = 5;
+						return 5;
+					}
+					
+				}
+			});
+			//vue生命周期:观察data数据，初始化事件，created:function方法，el是否存在 ,temptalate渲染
+	    </script>
+	</body>
+</html>
